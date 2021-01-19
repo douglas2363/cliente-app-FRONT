@@ -8,7 +8,9 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Cliente: </label>
-          <select class="form-control" ([ngModelOptions])="{standalone: true}" ([ngModel])="servico.idCliente">
+          <select class="form-control" 
+          ([ngModelOptions])="{standalone: true}" 
+          ([ngModel])="servico.idCliente">
             <option value="">Selecione...</option>
             <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
               {{ cliente.nome }}
@@ -22,7 +24,7 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Descricao:</label>
-          <input type="text" class="form-control" name="Descricao" id="inputDescricao" ([ngModel])="servico.descricao">
+          <input type="text" class="form-control" name="descricao" id="inputDescricao" ([ngModel])="servico.descricao">
         </div>
       </div>
     </div>
