@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -12,7 +13,8 @@ import { ServicoPrestadoListComponent } from './servico-prestado-list/servico-pr
   imports: [
     CommonModule,
     ServicoPrestadoRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     ServicoPrestadoFormComponent,
