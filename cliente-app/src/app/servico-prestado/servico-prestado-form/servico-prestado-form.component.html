@@ -9,8 +9,8 @@
         <div class="form-group">
           <label>Cliente: </label>
           <select class="form-control" 
-          ([ngModelOptions])="{standalone: true}" 
-          ([ngModel])="servico.idCliente">
+           [(ngModel)]="servico.idCliente"
+           [ngModelOptions] = "{standalone: true}">
             <option value="">Selecione...</option>
             <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
               {{ cliente.nome }}
@@ -24,7 +24,7 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Descricao:</label>
-          <input type="text" class="form-control" name="descricao" id="inputDescricao" ([ngModel])="servico.descricao">
+          <input type="text" class="form-control" name="descricao" id="inputDescricao" [(ngModel)]="servico.descricao">
         </div>
       </div>
     </div>
@@ -33,14 +33,14 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Data:</label>
-          <input type="text" class="form-control" name="data" id="inputData" ([ngModel])="servico.data">
+          <input type="text" class="form-control" name="data" id="inputData" [(ngModel)]="servico.data">
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group">
           <label>Valor:</label>
-          <input type="text" class="form-control" name="preco" id="inputPreco" ([ngModel])="servico.preco">
+          <input type="text" class="form-control" name="preco" id="inputPreco" [(ngModel)]="servico.preco">
         </div>
       </div>
     </div>

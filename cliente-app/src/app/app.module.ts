@@ -1,3 +1,4 @@
+import { ServicoPrestadoService } from './servico-prestado.service';
 import { ClientesModule } from './clientes/clientes.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,7 +28,8 @@ import {ServicoPrestadoModule} from './servico-prestado/servico-prestado.module'
 
   ],
   providers: [
-    ClientesService
+    ClientesService,
+    ServicoPrestadoService
   ],
   bootstrap: [
     AppComponent
