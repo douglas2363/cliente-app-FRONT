@@ -33,9 +33,6 @@ export class ClientesService {
     return this.http.delete<Cliente>(`${this.apiURL}/${cliente.id}`);
   }
  
- 
-  
-
   // getClientes(): Cliente[]{
   //     let cliente = new Cliente();
   //     cliente.id = 1;
