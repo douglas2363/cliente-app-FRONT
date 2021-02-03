@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path: 'servico-prestado', component: LayoutComponent, children : [
+    {path: 'servico-prestado', component: LayoutComponent, children : [
     {path: 'form', component: ServicoPrestadoFormComponent},
     {path: 'lista', component: ServicoPrestadoListComponent},
     {path : '', redirectTo : '/servico-prestado/lista', pathMatch : 'full'}

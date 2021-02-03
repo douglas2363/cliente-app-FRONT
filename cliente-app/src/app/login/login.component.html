@@ -12,6 +12,11 @@
               </div>
               
               <div class="card-body">
+                
+                <div class="alert alert-success" *ngIf="mensagemSucesso">
+                  {{mensagemSucesso}}
+                </div>
+
                 <div class="alert alert-danger" *ngIf="loginError">
                   Login e/ou Senha incorreto(a).
                 </div>
@@ -34,7 +39,9 @@
                           Entrar
                       </button>
 
-                      <button type="button" class="btn btn-success" *ngIf="cadastrando">
+                      <button type="button" class="btn btn-success" 
+                        (click)="cadastrarUsuario()"
+                        *ngIf="cadastrando">
                         Cadastrar
                     </button>
 
