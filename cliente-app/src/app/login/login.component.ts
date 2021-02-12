@@ -11,11 +11,11 @@ import { Usuario } from './../entites/usuario';
 })
 export class LoginComponent  {
 
-  username:string;
-  password:string;
-  loginError: boolean;
-  cadastrando:boolean;
-  mensagemSucesso:string;
+  username: string;
+  password: string;
+  cadastrando: boolean;
+  mensagemSucesso: string;
+  errors: String[];
 
 
   constructor(
@@ -25,7 +25,14 @@ export class LoginComponent  {
 
 
   onSubmit(){
-    this.router.navigate(['/home'])
+    this.authService
+          .tentarLogar(this.username, this.password)
+          .subscribe(response => {
+            this.router.navigate(['/home'])
+          }, errorResponse => {
+            this.errors = ['Usuário e/ou senha incorreto(s).']
+          })
+
   }
 
   preparaCadastrar(event){
@@ -37,19 +44,23 @@ export class LoginComponent  {
     this.cadastrando = false;
   }
 
-  cadastrarUsuario(){
+
+  cadastrar(){
     const usuario: Usuario = new Usuario();
     usuario.username = this.username;
     usuario.password = this.password;
     this.authService
-      .salvar(usuario)
-      .subscribe(response => {
-        this.mensagemSucesso = "Usuario cadastrado com sucesso! Efetue o Login";
-        this.loginError = false;
-      }, error =>{
-        this.loginError = true;
-        this.mensagemSucesso = null;
-      })
+        .salvar(usuario)
+        .subscribe( response => {
+            this.mensagemSucesso = "Cadastro realizado com sucesso! Efetue o login.";
+            this.cadastrando = false;
+            this.username = '';
+            this.password = '';
+            this.errors = []
+        }, errorResponse => {
+            this.mensagemSucesso = null;
+            this.errors = errorResponse.error.errors;
+        })
   }
 
 }
