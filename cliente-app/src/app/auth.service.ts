@@ -17,7 +17,7 @@ export class AuthService {
   tokenURL: string = environment.apiURLBase + environment.obterTokenUrl
   clientID: string = environment.clientId;
   clientSecret: string = environment.clientSecret;
-  jwtHelperService: JwtHelperService = new JwtHelperService();
+  jwtHelper: JwtHelperService = new JwtHelperService();
 
   constructor(
     private http: HttpClient
@@ -31,11 +31,23 @@ export class AuthService {
       return token;
     }
   }
+  encerrarSessao(){
+    localStorage.removeItem('access_token');
+  }
+
+  getUsuarioLogado(){
+    const token = this.obterToken();
+    if(token){
+       const usuario =  this.jwtHelper.decodeToken(token).user_name
+       return usuario;
+    }
+      return null;
+  }
 
   isAuthenticated(): boolean {
     const token = this.obterToken();
     if (token) {
-      const expired = this.jwtHelperService.isTokenExpired(token)
+      const expired = this.jwtHelper.isTokenExpired(token)
       return !expired;
     }
     return false;
